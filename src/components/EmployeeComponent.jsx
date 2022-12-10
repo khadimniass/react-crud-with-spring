@@ -1,3 +1,4 @@
+import {BrowserRouter as Router, Route, Routes,Link} from 'react-router-dom'
 import axios from 'axios'
 import React, { Component } from 'react'
 import { EMPLOYEE_URL } from '../services/EmployeeService'
@@ -8,6 +9,7 @@ export default class EmployeeComponent extends Component {
          this.state = {
             employees:[]
         }
+        this.addEmployee=this.addEmployee.bind(this);
     }
     componentDidMount(){
     //    EmployeeService.getEmployees().then(result=>{
@@ -31,11 +33,19 @@ export default class EmployeeComponent extends Component {
             error = new Error();
             console.log(error);
           });
-    }
+        }
+          addEmployee(){
+            //this.context.transitionTo("add-employee")
+            //this.props.history.push("add-employee")
+            //this.props.navigation.navigate()
+          }
     render() {
         return (
           <div>
             <h2 className='text-center'>liste des employes</h2>
+            <div className="row">
+                <Link to="add-employee" className="btn btn-primary">Ajouter</Link>
+            </div>
             <div className="row">
                 <table className="table table-striped table-borded">
                     <thead>
