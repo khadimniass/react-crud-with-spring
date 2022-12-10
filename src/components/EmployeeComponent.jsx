@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import EmployeeService, { EMPLOYEE_URL } from '../services/EmployeeService'
+import { EMPLOYEE_URL } from '../services/EmployeeService'
 
 export default class EmployeeComponent extends Component {
     constructor(props){
