@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route, Routes,Link} from 'react-router-dom'
+import {BrowserRouter as Router, Link} from 'react-router-dom'
 import axios from 'axios'
 import React, { Component } from 'react'
 import { EMPLOYEE_URL } from '../services/EmployeeService'
@@ -9,7 +9,7 @@ export default class EmployeeComponent extends Component {
          this.state = {
             employees:[]
         }
-        this.addEmployee=this.addEmployee.bind(this);
+        // this.addEmployee=this.addEmployee.bind(this);
     }
     componentDidMount(){
     //    EmployeeService.getEmployees().then(result=>{
