@@ -9,7 +9,7 @@ export default class EmployeeComponent extends Component {
          this.state = {
             employees:[]
         }
-        // this.addEmployee=this.addEmployee.bind(this);
+        this.showEmployee=this.showEmployee.bind(this)
     }
     componentDidMount(){
     //    EmployeeService.getEmployees().then(result=>{
@@ -35,19 +35,29 @@ export default class EmployeeComponent extends Component {
           });
         }
           addEmployee(){
-            //this.context.transitionTo("add-employee")
-            //this.props.history.push("add-employee")
-            //this.props.navigation.navigate()
+            this.context.transitionTo("add-employee")
+            this.props.history.push("add-employee")
+            this.props.navigation.navigate()
           }
+          showEmployee(id){
+              console.log(`employee/${id}`)
+            this.props.history.push(`employee/${id}`)
+          }
+          editEmployee(id){
+              console.log('edit => ',id)
+          }
+        deleteEmployee(id){
+            console.log('delete => ',id)
+        }
     render() {
         return (
           <div>
-            <h2 className='text-center'>liste des employes</h2>
+            <h2 className='text-center text-muted mt-3'>liste des employes</h2>
             <div className="row">
-                <Link to="add-employee" className="btn btn-primary">Ajouter</Link>
-            </div>
-            <div className="row">
-                <table className="table table-striped table-borded">
+              <div className="">
+                <Link to="add-employee" className="btn float-end btn-outline-primary">+ Ajouter</Link>
+              </div>
+                <table className="table table-striped table-borded text-center">
                     <thead>
                         <tr>
                             <th>Employee first name</th>
@@ -64,7 +74,11 @@ export default class EmployeeComponent extends Component {
                                 <td>{employee.firstName}</td>
                                 <td>{employee.lastName}</td>
                                 <td>{employee.emailId}</td>
-    
+                                <td>
+                                    <button className="btn btn-primary" onClick={()=>this.showEmployee(employee.id)}>detail</button>
+                                    <button className="btn btn-secondary" onClick={()=>this.editEmployee(employee.id)}>modif</button>
+                                    <button className="btn btn-danger" onClick={()=>this.deleteEmployee(employee.id)}>delete</button>
+                                </td>
                             </tr>
                             )
                     }
