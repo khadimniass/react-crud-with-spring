@@ -28,9 +28,10 @@ export default class CreateEmployeeComponent extends Component {
     saveEmployee(e) {
         e.preventDefault();
         Swal.fire({
-            title: 'Good job!',
+            title: '<strong>Good job!</strong>',
             html: '<i>You clicked the button!</i>',
-            icon: 'success'
+            icon: 'success',
+            timer: 1000
         })
         let employee={firstName: this.state.firstName, lastName: this.state.lastName,emailId: this.state.emailId};
         axios.post(EMPLOYEE_URL,employee)
